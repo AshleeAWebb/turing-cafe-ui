@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { fetchReservation } from '../apiCalls';
 import Form from '../Form/Form';
+import Reservation from '../Reservations/Reservations';
 
 class App extends Component {
   constructor() {
@@ -35,9 +36,7 @@ class App extends Component {
       <Form />
         </div>
         <div className='resy-container'>
-  
-
-
+      <Reservation reservations={reservations}/>
         </div>
       </div>
     );
