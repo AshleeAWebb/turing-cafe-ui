@@ -6,4 +6,4 @@ const fetchReservation = () => {
   })
 }
 
-  export { fetchReservation }
+  export { fetchReservation}

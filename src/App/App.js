@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       reservations: []
     };
+    this.getReservations = this.getReservations.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,25 @@ class App extends Component {
       });
   }
 
+  postReservation = (reservationData) => {
+    return fetch("http://localhost:3001/api/v1/reservations", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reservationData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Reservation:', data);
+      return data; 
+    })
+    .catch(error => {
+      console.log(error.status);
+      throw new Error("Error creating reservation");
+    });
+  };
+
   render() {
     const { reservations } = this.state; 
 
@@ -33,7 +53,7 @@ class App extends Component {
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <div className='resy-form'>
-          <Form />
+          <Form postReservation={this.postReservation} fetchReservations={this.getReservations} />
         </div>
         <div className='resy-container'>
           <Reservation reservations={reservations} />
