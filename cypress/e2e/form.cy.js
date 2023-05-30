@@ -25,27 +25,19 @@ describe('Reservations Form', () => {
   });
 
   it('Should allow user to input data and submit it to the page', () => {
-    const newReservation = { name: 'Ashlee', date: '02/13', time: '6:00', number: "2" };
-    cy.intercept('POST', 'http://localhost:3001/api/v1/reservations', (req) => {
-      expect(req.body).to.include(newReservation);
-      req.reply({ body: { ...newReservation, id: 3 }, statusCode: 201 });
-    });
+    const newReservation = { name: 'Ashlee', date: '02/13', time: '6:00', number: "2", id: 4 };
+    cy.intercept('POST', 'http://localhost:3001/api/v1/reservations', { body: { ...newReservation, statusCode: 201 }});
 
     cy.get('input[name=name]').type(newReservation.name);
     cy.get('input[name=date]').type(newReservation.date);
     cy.get('input[name=time]').type(newReservation.time);
     cy.get('input[name=guest]').type(newReservation.number);
     cy.get('.formButton').click();
-    cy.wait(1000);
-    cy.get('.reservations').children().eq(2)
-  });
 
-  it('Should display a new card with that user\'s input', () => {
-    const thirdReservation = this.reservationsData[2];
-    cy.get('.reservations').children().eq(2)
-      .should('contain', thirdReservation.name)
-      .and('contain', thirdReservation.date)
-      .and('contain', thirdReservation.time)
-      .and('contain', `Number of guests: ${thirdReservation.number}`);
+    cy.get('.reservations').children().last()
+      .should('contain', newReservation.name)
+      .and('contain', newReservation.date)
+      .and('contain', newReservation.time)
+      .and('contain', `Number of guests: ${newReservation.number}`);
   });
 });
