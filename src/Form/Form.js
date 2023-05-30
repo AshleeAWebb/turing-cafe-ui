@@ -8,7 +8,7 @@ class Form extends Component {
       name:"",
       date: "",
       time: "",
-      guest: 0
+      guest: ""
     }
   }
   handleChange = event => {

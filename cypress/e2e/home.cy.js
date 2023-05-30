@@ -1,4 +1,4 @@
-describe('Reservations Page', () => {
+describe('Reservations Home Page', () => {
   beforeEach(() => {
     cy.fixture('reservations.json').as('reservationsData');
     cy.intercept('GET', 'http://localhost:3001/api/v1/reservations', 
