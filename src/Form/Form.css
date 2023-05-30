@@ -1,0 +1,14 @@
+form {
+  margin: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+input[type="text"] {
+  margin-right: 10px; 
+}
+
+.formButton {
+  margin: 10px;
+}

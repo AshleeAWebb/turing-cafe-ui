@@ -1,0 +1,27 @@
+.card {
+  margin: 0;
+  background-color: white;
+  border-radius: 4px;
+  border: teal 4px solid;
+  color: teal;
+  font-family: 'Pacifico', cursive;
+  height: 230px; 
+  width: 230px;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+}
+.card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.card li {
+  margin-bottom: 5px;
+}
+button {
+  background-color: teal;
+  color: white;
+}
